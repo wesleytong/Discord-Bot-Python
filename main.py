@@ -21,8 +21,5 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
-client.run('Njc2MzM0MTA4Nzc4OTU0Nzcx.XkNEmA.wfr7Bx7LPEJErVYZxiay6csC4Ik')
+client.run('token-goes-here')
 
-@bot.command()
-async def test(ctx, arg):
-    await ctx.send(arg)

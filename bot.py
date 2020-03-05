@@ -165,4 +165,4 @@ async def uwuCount(ctx):
 
 
 
-bot.run('Njc2MzM0MTA4Nzc4OTU0Nzcx.XkNEmA.wfr7Bx7LPEJErVYZxiay6csC4Ik')
+bot.run('token-goes-here')
