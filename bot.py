@@ -48,29 +48,6 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-    if message.content.lower() == 'penis':
-        await message.add_reaction('🇵')
-        await message.add_reaction('🇪')
-        await message.add_reaction('🇳')
-        await message.add_reaction('🇮')
-        await message.add_reaction('🇸')
-
-    if message.author.id == 113407961212125184 and on == True:
-        await message.add_reaction('🇸')
-        await message.add_reaction('🇲')
-        await message.add_reaction('🇴')
-        await message.add_reaction('🇱')
-        #
-        await message.add_reaction('🇩')
-        await message.add_reaction('🇮')
-        await message.add_reaction('🇨')
-        await message.add_reaction('🇰')
-        #
-        await message.add_reaction('🇧')
-        await message.add_reaction('🇹')
-        await message.add_reaction('🇼')
-
-
     if message.content.startswith('<@'):
         await message.channel.send(message.content)
         await message.channel.send(message.content)
@@ -164,11 +141,6 @@ async def gay(ctx):
         await dm.send('GOD DAMN IT KELLYN GET IN HERE')
 
 @bot.command()
-async def lily(ctx):
-    fil = await ctx.message.attachments[0].save()
-    await ctx.send(file=fil)
-
-@bot.command()
 async def banish(ctx, userId=221417504944160770):
     await ctx.channel.purge(limit=1)
     voicechannels = ctx.guild.voice_channels
@@ -193,4 +165,4 @@ async def uwuCount(ctx):
 
 
 
-bot.run('MjIyMjY4ODE1NDMyNDgyODE4.D3Np4g.qBk3BGnPaqwau1MkT1lu3abINEg')
+bot.run('Njc2MzM0MTA4Nzc4OTU0Nzcx.XkNEmA.wfr7Bx7LPEJErVYZxiay6csC4Ik')
