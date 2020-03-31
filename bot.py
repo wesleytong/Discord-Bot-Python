@@ -1,6 +1,7 @@
 import discord
 import asyncio
 import random
+import botToken
 from discord.ext import commands
 
 description = '''An example bot to showcase the discord.ext.commands extension
@@ -168,4 +169,4 @@ async def uwuCount(ctx):
 
 
 
-bot.run('Njc2MzM0MTA4Nzc4OTU0Nzcx.XmBNVA.1CRhh2EXzL56ub2JpeFtTVX4AB4')
+bot.run(botToken.YOUR_TOKEN)
