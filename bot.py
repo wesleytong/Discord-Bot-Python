@@ -56,7 +56,7 @@ async def on_message(message):
 
 @bot.command()
 async def clear(ctx, amount: int):
-    await ctx.channel.purge(limit=amount)
+    await ctx.channel.purge(limit=1)
     f = open('deletedTxts.txt', 'a')
     async for message in ctx.channel.history(limit=amount):
         f.write(message.content)
@@ -131,14 +131,17 @@ async def stoppls(ctx):
     f = 1
 
 @bot.command()
-async def gay(ctx):
+async def spam(ctx, userId=101389477888430080, msg='', amount=0):
     await ctx.channel.purge(limit=1)
-    josh = ctx.guild.get_member(132270028719390721)
-    if(josh.dm_channel == None):
-        await josh.create_dm()
-    dm= josh.dm_channel
-    while True:
-        await dm.send('GOD DAMN IT KELLYN GET IN HERE')
+    messagesSent = 0;
+    user = ctx.guild.get_member(userId)
+    if(user.dm_channel == None):
+        await user.create_dm()
+    dm= user.dm_channel
+    while messagesSent < amount:
+        await asyncio.sleep(.5)
+        await dm.send(msg)
+        messagesSent += 1
 
 @bot.command()
 async def banish(ctx, userId=221417504944160770):
@@ -165,4 +168,4 @@ async def uwuCount(ctx):
 
 
 
-bot.run('token-goes-here')
+bot.run('Njc2MzM0MTA4Nzc4OTU0Nzcx.XmBNVA.1CRhh2EXzL56ub2JpeFtTVX4AB4')
