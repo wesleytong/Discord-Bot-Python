@@ -15,6 +15,10 @@ disc = discord.Client
 
 on = False
 f = 0
+inHouseStatus = 0
+inHousePool = []
+inHouseTeam1 = []
+inHouseTeam2 = []
 uwuFile = open("uwuCount.txt", "r")
 uwuDict = {}
 for x in uwuFile:
@@ -165,6 +169,78 @@ async def uwuCount(ctx):
     global uwuDict
     for i in uwuDict:
         await ctx.channel.send('<@' + i + '>' + ' : ' + uwuDict[i] + ' degen messages')
+
+@bot.command()
+async def superhere(ctx):
+    membersListId = ctx.channel.members
+    for i in membersListId:
+        await ctx.channel.send('<@' + str(i.id) + '>')
+
+@bot.command()
+async def inhouse(ctx, status=1):
+    global inHouseStatus
+    if(inHouseStatus == 0 and status==1):
+        await ctx.channel.send('Starting in house session...')
+    elif(status==0):
+        await ctx.channel.send('Ending in house session...')
+    elif(inHouseStatus == 1 and status != 0):
+        await ctx.channel.send('In house in progress...')
+    elif (inHouseStatus != 1 and status != 1):
+        await ctx.channel.send('No in house in progress...')
+    inHouseStatus = status
+
+
+@bot.command()
+async def join(ctx):
+    await ctx.channel.purge(limit=1)
+    if (inHouseStatus == 1):
+        if ctx.message.author != bot.user and len(inHousePool) <= 9 and ctx.message.author.id not in inHousePool:
+            await ctx.channel.send('Adding ' + '<@' + str(ctx.message.author.id) + '> to user pool')
+            inHousePool.append(ctx.message.author.id)
+        elif(len(inHousePool) >= 10):
+            await ctx.channel.send('No more players can join')
+        elif(ctx.message.author.id  in inHousePool):
+            await ctx.channel.send('You\'re already in dummy')
+    else:
+        await ctx.channel.send('No in house in progress')
+
+@bot.command()
+async def players(ctx):
+    if(inHouseStatus == 1):
+        await ctx.channel.send('Players in pool: ')
+        for i in inHousePool:
+            await ctx.channel.send('<@' + str(i) + '>')
+
+        await ctx.channel.send('Players in team 1: ')
+        for i in inHouseTeam1:
+            await ctx.channel.send('<@' + str(i) + '>')
+
+        await ctx.channel.send('Players in team 2: ')
+        for i in inHouseTeam2:
+                await ctx.channel.send('<@' + str(i) + '>')
+    else:
+        await ctx.channel.send('No in house in progress')
+
+def addPlayerTeam1(id:int):
+    inHouseTeam1.append(id)
+
+def addPlayerTeam2(id:int):
+    inHouseTeam2.append(id)
+
+
+def removePlayerTeam1(id: int):
+    inHouseTeam1.pop(id)
+
+
+def removePlayerTeam2(id: int):
+    inHouseTeam2.pop(id)
+
+
+
+
+
+
+
 
 
 
