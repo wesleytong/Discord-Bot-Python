@@ -78,6 +78,17 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
+
+
+    for i in message.author.roles:
+        if i.id == 764229631166644226:
+            user = message.guild.get_member(message.author.id)
+            if (user.dm_channel == None):
+                await user.create_dm()
+            dm = user.dm_channel
+            await dm.send("shut up simp")
+
+
     # if message.content.startswith('<@'):
     #     await message.channel.send(message.content)
     #     await message.channel.send(message.content)
