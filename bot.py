@@ -62,6 +62,7 @@ async def on_message(message):
     # global team1Bans
     # global team2Champs
     # global team2Bans
+    facts = ["tru","facts","fact","fax","factual information","ngl","true","truth","on god","no cap","right blake","right blake?","tru?"]
     if str2.find('uwu') >= 0 and message.author != bot.user:
         print(message.content)
         if(str(message.author.id) in uwuDict):
@@ -78,15 +79,8 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-
-
-    for i in message.author.roles:
-        if i.id == 764229631166644226:
-            user = message.guild.get_member(message.author.id)
-            if (user.dm_channel == None):
-                await user.create_dm()
-            dm = user.dm_channel
-            await dm.send("shut up simp")
+    if message.content.lower() in facts:
+        await message.channel.send("on god no cap")
 
 
     # if message.content.startswith('<@'):
@@ -146,7 +140,7 @@ async def clear(ctx, amount: int):
 @bot.command()
 async def commands(ctx):
     await ctx.channel.purge(limit=1)
-    await ctx.send('```ur gay```', delete_after=30)
+    await ctx.send('```Commands go here```', delete_after=30)
 
 @bot.command()
 async def p(ctx, name: str, amount=3.0):
@@ -205,8 +199,8 @@ async def stoppls(ctx):
     f = 1
 
 @bot.command()
-async def spam(ctx, userId=101389477888430080, msg='', amount=0):
-    await ctx.channel.purge(limit=1)
+async def spam(ctx, msg='', amount=0, userId=101389477888430080,):
+    # await ctx.channel.purge(limit=1)
     messagesSent = 0;
     user = ctx.guild.get_member(userId)
     if(user.dm_channel == None):
